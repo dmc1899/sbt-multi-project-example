@@ -6,7 +6,7 @@ scalaVersion in ThisBuild := "2.12.3"
 
 lazy val global = project
   .in(file("."))
-  .settings(settings)
+  .settings(releaseSettings, settings)
   .aggregate(
     common,
     multi1,
@@ -27,6 +27,7 @@ lazy val multi1 = project
     //  version := "0.0.2",
     settings,
     assemblySettings,
+    releaseSettings,
     libraryDependencies ++= commonDependencies ++ Seq(
       dependencies.monocleCore,
       dependencies.monocleMacro
@@ -42,6 +43,7 @@ lazy val multi2 = project
     //   version := "0.0.3",
     settings,
     assemblySettings,
+    releaseSettings,
     libraryDependencies ++= commonDependencies ++ Seq(
       dependencies.pureconfig
     )
@@ -133,6 +135,16 @@ lazy val assemblySettings = Seq(
   assemblyMergeStrategy in assembly := {
     case PathList("META-INF", xs @ _*) => MergeStrategy.discard
     case _                             => MergeStrategy.first
+  }
+)
+
+lazy val releaseSettings = Seq(
+  releaseUseGlobalVersion := false,
+  releaseVersionFile := file(name.value + "/version.sbt"),
+  releaseTagName := {
+    val versionInThisBuild = (version in ThisBuild).value
+    val versionValue       = version.value
+    s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild else versionValue}"
   }
 )
 
