@@ -16,6 +16,7 @@ lazy val global = project
 lazy val common = project
   .settings(
     name := "common",
+    //  version := "0.0.1",
     settings,
     libraryDependencies ++= commonDependencies
   )
@@ -23,6 +24,7 @@ lazy val common = project
 lazy val multi1 = project
   .settings(
     name := "multi1",
+    //  version := "0.0.2",
     settings,
     assemblySettings,
     libraryDependencies ++= commonDependencies ++ Seq(
@@ -37,6 +39,7 @@ lazy val multi1 = project
 lazy val multi2 = project
   .settings(
     name := "multi2",
+    //   version := "0.0.3",
     settings,
     assemblySettings,
     libraryDependencies ++= commonDependencies ++ Seq(
