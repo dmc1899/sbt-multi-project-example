@@ -13,3 +13,5 @@ addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")
 
 
 addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.10")
+
+//addSbtPlugin("org.lancegatlin" % "sbt-release-gitflow" % "1.0.10-SNAPSHOT")  Not compatible with SBT v1.0.2
