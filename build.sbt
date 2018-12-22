@@ -123,6 +123,7 @@ lazy val wartremoverSettings = Seq(
   wartremoverWarnings in (Compile, compile) ++= Warts.allBut(Wart.Throw)
 )
 
+
 lazy val scalafmtSettings =
   Seq(
     scalafmtOnCompile := true,
