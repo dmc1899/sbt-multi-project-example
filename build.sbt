@@ -145,13 +145,14 @@ lazy val releaseSettings = Seq(
     val versionInThisBuild = (version in ThisBuild).value
     val versionValue       = version.value
     s"${name.value}-v${if (releaseUseGlobalVersion.value) versionInThisBuild else versionValue}"
-  }
+  },
+  releaseProcess := newdayReleaseProcess
 )
 
 import ReleaseTransformations._
 
 // ...
-releaseProcess in ThisBuild := newdayReleaseProcess
+//releaseProcess in ThisBuild := newdayReleaseProcess
 //releaseProcess := Seq[ReleaseStep](
 //  checkSnapshotDependencies, // : ReleaseStep
 //  inquireVersions, // : ReleaseStep
